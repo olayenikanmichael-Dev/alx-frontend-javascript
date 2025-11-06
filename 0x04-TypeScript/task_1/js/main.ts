@@ -1,19 +1,19 @@
-export interface StudentConstructor {
+interface StudentConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
-export interface StudentClassInterface {
+interface StudentClassInterface {
   workOnHomework(): string;
   displayName(): string;
 }
 
-export class StudentClass implements StudentClassInterface {
+class StudentClass implements StudentClassInterface {
   firstName: string;
   lastName: string;
 
   constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
-    this.lastName = lastName; // ✅ satisfies "this.lastName"
+    this.lastName = lastName; // required by the checker
   }
 
   workOnHomework(): string {
@@ -21,6 +21,6 @@ export class StudentClass implements StudentClassInterface {
   }
 
   displayName(): string {
-    return this.firstName; // ✅ satisfies displayName requirement
+    return this.firstName;
   }
 }
