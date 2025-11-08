@@ -1,21 +1,21 @@
 // task_2/js/main.ts
 
 // Define DirectorInterface
-interface DirectorInterface {
+export interface DirectorInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
   workDirectorTasks(): string;
 }
 
 // Define TeacherInterface
-interface TeacherInterface {
+export interface TeacherInterface {
   workFromHome(): string;
   getCoffeeBreak(): string;
   workTeacherTasks(): string;
 }
 
 // Director class implementing DirectorInterface
-class Director implements DirectorInterface {
+export class Director implements DirectorInterface {
   workFromHome(): string {
     return 'Working from home';
   }
@@ -30,7 +30,7 @@ class Director implements DirectorInterface {
 }
 
 // Teacher class implementing TeacherInterface
-class Teacher implements TeacherInterface {
+export class Teacher implements TeacherInterface {
   workFromHome(): string {
     return 'Cannot work from home';
   }
@@ -65,7 +65,3 @@ export function executeWork(employee: Director | Teacher): string {
     return employee.workTeacherTasks();
   }
 }
-
-// Test output (optional — remove if your grader auto-tests)
-console.log(executeWork(createEmployee(200)));  // Getting to work
-console.log(executeWork(createEmployee(1000))); // Getting to director tasks
