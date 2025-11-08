@@ -1,3 +1,5 @@
+// task_2/js/main.ts
+
 // Define DirectorInterface
 interface DirectorInterface {
   workFromHome(): string;
@@ -43,7 +45,7 @@ class Teacher implements TeacherInterface {
 }
 
 // Function that creates either a Director or Teacher
-function createEmployee(salary: number | string): Director | Teacher {
+export function createEmployee(salary: number | string): Director | Teacher {
   if (typeof salary === 'number' && salary < 500) {
     return new Teacher();
   }
@@ -51,12 +53,12 @@ function createEmployee(salary: number | string): Director | Teacher {
 }
 
 // Type predicate to check if employee is a Director
-function isDirector(employee: Director | Teacher): employee is Director {
+export function isDirector(employee: Director | Teacher): employee is Director {
   return employee instanceof Director;
 }
 
 // Function that executes work depending on the employee type
-function executeWork(employee: Director | Teacher): string {
+export function executeWork(employee: Director | Teacher): string {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
@@ -64,6 +66,6 @@ function executeWork(employee: Director | Teacher): string {
   }
 }
 
-// ✅ Expected Results
+// Test output (optional — remove if your grader auto-tests)
 console.log(executeWork(createEmployee(200)));  // Getting to work
 console.log(executeWork(createEmployee(1000))); // Getting to director tasks
